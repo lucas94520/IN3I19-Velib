@@ -1,0 +1,13 @@
+{
+	"key": "75279893c9bfa89946178561b6ac75659dd7e997",
+	"contrat": "Paris",
+	"errors": {
+		"301": "redirection",
+		"302": "respectivement permanente et temporaire",
+		"401": "utilisateur non authentifié",
+		"403": "accès refusé",
+		"404": "page non trouvée",
+		"500": "erreur serveur",
+		"503": "erreur serveur"
+	}
+}
