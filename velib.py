@@ -46,26 +46,34 @@ data = response.json()
 #histogramme : vous devez extraire les paramètres statistiques essentiels
 #(moyenne, médiane, écart type, variance, ...)
 
-freqEtVal = []
+listVeloLibre = []
+
 for station in data :
     if (station['status']=="OPEN") :
-        freqEtVal.append(station['available_bikes'])
-vmin = min(freqEtVal)
-vmax = max(freqEtVal)
-print("Moyenne : " + str(np.mean(freqEtVal)))
-print("Mediane : " + str(np.median(freqEtVal)))
-print("Min : " + str(vmin))
-print("Max : " + str(vmax))
-print("Ecart type : " + str(np.std(freqEtVal)))
-print('Q1: ', stats.scoreatpercentile(freqEtVal, 25))
-print('Q2: ', stats.scoreatpercentile(freqEtVal, 50))
-print('Q3: ', stats.scoreatpercentile(freqEtVal, 75))
+        listVeloLibre.append(station['available_bikes'])
+
+vmin = min(listVeloLibre)
+vmax = max(listVeloLibre)
+#print("Nombre de stations ouverte :" + str(len(listVeloLibre)))
+#print("Moyenne : " + str(np.mean(listVeloLibre)))
+#print("Mediane : " + str(np.median(listVeloLibre)))
+#print("Min : " + str(vmin))
+#print("Max : " + str(vmax))
+#print("Ecart type : " + str(np.std(listVeloLibre)))
+#print('Q1: ', stats.scoreatpercentile(listVeloLibre, 25))
+#print('Q2: ', stats.scoreatpercentile(listVeloLibre, 50))
+#print('Q3: ', stats.scoreatpercentile(listVeloLibre, 75))
 
 #Titre Histogram : nombre de vélo libre par station
 pas = math.ceil((vmax-vmin)/9)
-b = list(range(vmin,pas*10,pas))
-print(b)
 
+b = list(range(vmin,pas*10,pas)) #Marche pas pour les x du diagramme
+print(b)
+n, bins, patches = plt.hist(listVeloLibre, bins=b)
+plt.xlabel('Nombre de vélo disponible')
+plt.ylabel('Nombre de station')
+plt.title('Vélos disponible dans les stations ouvertes à ' + contrat)
+plt.show()
 
 
 #représentation géolocalisée : selon l’étude, les données concerneront un pays,
