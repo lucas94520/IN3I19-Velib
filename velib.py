@@ -7,6 +7,8 @@ import json
 import sys
 import math
 
+#fisef
+
 #Sources :
 #https://perso.esiee.fr/~courivad/Python/
 #http://docs.python-requests.org/en/master/
